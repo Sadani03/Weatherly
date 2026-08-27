@@ -1,6 +1,10 @@
 import axios from "axios";
 import { getCities } from "./city.service";
 import { calculateComfortIndex } from "../utils/comfort-index";
+import {
+  weatherCache,
+  CACHE_KEYS,
+} from "./cache.service";
 
 const OPENWEATHER_URL =
   "https://api.openweathermap.org/data/2.5/weather";
@@ -66,6 +70,23 @@ const fetchWeatherByCityCode = async (
 };
 
 export const getWeatherForAllCities = async (): Promise<WeatherData[]> => {
+  const cachedWeather = weatherCache.get<WeatherData[]>(
+    CACHE_KEYS.WEATHER
+  );
+
+  if (cachedWeather) {
+    weatherCache.set(CACHE_KEYS.WEATHER_STATUS, {
+      status: "HIT",
+      timestamp: new Date().toISOString(),
+    });
+
+    console.log("Weather cache: HIT");
+
+    return cachedWeather;
+  }
+
+  console.log("Weather cache: MISS");
+
   const cities = getCities();
 
   const weatherPromises = cities.map((city) =>
@@ -74,12 +95,22 @@ export const getWeatherForAllCities = async (): Promise<WeatherData[]> => {
 
   const weatherData = await Promise.all(weatherPromises);
 
-  const rankedCities = weatherData.sort(
-    (a, b) => b.comfortIndex - a.comfortIndex
+  const rankedCities = weatherData
+    .sort((a, b) => b.comfortIndex - a.comfortIndex)
+    .map((city, index) => ({
+      ...city,
+      rank: index + 1,
+    }));
+
+  weatherCache.set(
+    CACHE_KEYS.WEATHER,
+    rankedCities
   );
 
-  return rankedCities.map((city, index) => ({
-    ...city,
-    rank: index + 1,
-  }));
+  weatherCache.set(CACHE_KEYS.WEATHER_STATUS, {
+    status: "MISS",
+    timestamp: new Date().toISOString(),
+  });
+
+  return rankedCities;
 };

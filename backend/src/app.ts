@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import weatherRoutes from "./routes/weather.routes";
+import cacheRoutes from "./routes/cache.routes";
 
 const app = express();
 
@@ -15,5 +16,6 @@ app.get("/api/health", (_req, res) => {
 });
 
 app.use("/api/weather", weatherRoutes);
+app.use("/api/cache", cacheRoutes);
 
 export default app;
