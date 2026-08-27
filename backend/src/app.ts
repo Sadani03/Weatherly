@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import weatherRoutes from "./routes/weather.routes";
 
 const app = express();
 
@@ -12,5 +13,7 @@ app.get("/api/health", (_req, res) => {
     message: "Fidenz Weather Analytics API is running",
   });
 });
+
+app.use("/api/weather", weatherRoutes);
 
 export default app;
