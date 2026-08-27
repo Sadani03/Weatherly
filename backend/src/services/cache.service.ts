@@ -7,6 +7,10 @@ export const weatherCache = new NodeCache({
 });
 
 export const CACHE_KEYS = {
-  WEATHER: "weather-data",
+  PROCESSED_WEATHER: "processed-weather-data",
   WEATHER_STATUS: "weather-cache-status",
+};
+
+export const getRawWeatherCacheKey = (cityCode: string): string => {
+  return `raw-weather:${cityCode}`;
 };
