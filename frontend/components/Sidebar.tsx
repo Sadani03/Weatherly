@@ -13,12 +13,13 @@ export default function Sidebar() {
   return (
     <aside className="hidden min-h-screen w-64 flex-col border-r border-slate-200 bg-white p-5 lg:flex">
       <div className="flex items-center gap-3">
-        <WeatherLogo size={44} />
+        <WeatherLogo size={58} />
 
         <div>
           <h1 className="text-lg font-bold text-slate-900">
             Fidenz
           </h1>
+
           <p className="text-xs text-slate-500">
             Weather Analytics
           </p>

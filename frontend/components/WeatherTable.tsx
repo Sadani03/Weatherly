@@ -1,23 +1,28 @@
+import Image from "next/image";
 import { Weather } from "@/types/weather";
 
 interface WeatherTableProps {
   weather: Weather[];
+  showHeader?: boolean;
 }
 
 export default function WeatherTable({
   weather,
+  showHeader = true,
 }: WeatherTableProps) {
   return (
-    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-      <div className="border-b border-slate-200 px-6 py-5">
-        <h2 className="text-lg font-bold text-slate-900">
-          City Comfort Ranking
-        </h2>
+    <div className="overflow-hidden bg-white">
+      {showHeader && (
+        <div className="border-b border-slate-200 px-6 py-5">
+          <h2 className="text-lg font-bold text-slate-900">
+            City Comfort Ranking
+          </h2>
 
-        <p className="mt-1 text-xs text-slate-500">
-          Most comfortable to least comfortable
-        </p>
-      </div>
+          <p className="mt-1 text-xs text-slate-500">
+            Most comfortable to least comfortable
+          </p>
+        </div>
+      )}
 
       <div className="overflow-x-auto">
         <table className="w-full min-w-[760px] text-left">
@@ -66,10 +71,11 @@ export default function WeatherTable({
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-3">
                     {item.icon && (
-                      <img
+                      <Image
                         src={`https://openweathermap.org/img/wn/${item.icon}@2x.png`}
                         alt={item.description}
-                        className="h-9 w-9"
+                        width={36}
+                        height={36}
                       />
                     )}
 
