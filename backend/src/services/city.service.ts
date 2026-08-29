@@ -1,10 +1,10 @@
 import citiesData from "../data/cities.json";
 
-interface City {
+export interface City {
   CityCode: string;
   CityName: string;
-  Temp: string;
-  Status: string;
+  Temp?: string;
+  Status?: string;
 }
 
 interface CitiesData {
