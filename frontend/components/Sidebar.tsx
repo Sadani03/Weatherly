@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import {
   LayoutDashboard,
   CircleHelp,
@@ -53,22 +54,23 @@ export default function Sidebar({
       </div>
 
       <nav className="mt-10 space-y-2">
-        <button
-          type="button"
+        <Link
+          href="/"
           onClick={onClose}
           className="flex w-full items-center gap-3 rounded-xl bg-indigo-600 px-4 py-3 text-sm font-medium text-white transition hover:bg-indigo-700"
         >
           <LayoutDashboard size={18} />
           Dashboard
-        </button>
+        </Link>
 
-        <button
-          type="button"
+        <Link
+          href="/about"
+          onClick={onClose}
           className="flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium text-slate-600 transition hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"
         >
           <CircleHelp size={18} />
           About
-        </button>
+        </Link>
 
         <a
           href="/auth/logout"
