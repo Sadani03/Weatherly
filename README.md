@@ -134,19 +134,6 @@ The main objectives of this project were to:
 
 ---
 
-## 📚 What I Learned
-
-Through developing Weatherly, I gained practical experience in:
-
-- TypeScript
-- React / Next.js
-- API integration
-- Handling dynamic data
-- Responsive web design
-- UI development
-- Git version control
-- GitHub repository management
-
 
 ## 👩‍💻 Author
 
