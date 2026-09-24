@@ -59,7 +59,7 @@ export default async function AboutPage() {
               <h2 className="text-xl font-bold">Project Overview</h2>
 
               <p className="mt-3 leading-7 text-slate-600 dark:text-slate-400">
-                Fidenz Weather Analytics is a full-stack weather dashboard
+                Weatherly is a full-stack weather dashboard
                 that retrieves live weather information from OpenWeatherMap
                 and ranks cities using a custom Comfort Index.
               </p>

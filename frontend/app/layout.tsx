@@ -4,7 +4,7 @@ import "./globals.css";
 import ThemeProvider from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
-  title: "Fidenz Weather Analytics",
+  title: "Weatherly",
   description:
     "Weather analytics dashboard with a custom Comfort Index",
 };

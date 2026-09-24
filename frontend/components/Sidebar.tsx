@@ -32,7 +32,7 @@ export default function Sidebar({
 
           <div>
             <h1 className="text-lg font-bold text-slate-900 dark:text-white">
-              Fidenz
+              Weatherly
             </h1>
 
             <p className="text-xs text-slate-500 dark:text-slate-400">
